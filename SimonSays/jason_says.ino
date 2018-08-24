@@ -1,13 +1,17 @@
-//Simon Says
+//Arduino Simon Says
 //Author: Jason Tian
 //August 22, 2018
 
-int base = 8;
-int num = 3;
-//Red-8 Green-9 Blue-10
-
 #include <LiquidCrystal.h>
 #include <IRremote.h>
+
+int base = 8;
+int num = 3;
+
+//LED colours based on sockets they are plugged into
+int red = 8;
+int green = 9;
+int blue = 10;
 
 LiquidCrystal lcd(12, 11, 6, 5, 4, 3);  //The ports plugged into LCD
 const int irReceiverPin = 2;  //The port of the infrared receiver
@@ -55,11 +59,11 @@ void loop() {
         break;
       case 2:
         if (input == -2963)
-          makeMove(8);
+          makeMove(red);
         else if (input == -24658)
-          makeMove(9);
+          makeMove(green);
         else if (input == -25059)
-          makeMove(10);
+          makeMove(blue);
         break;
       case 3:
         break;
