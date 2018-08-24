@@ -1,3 +1,7 @@
+//Simon Says
+//Author: Jason Tian
+//August 22, 2018
+
 int base = 8;
 int num = 3;
 //Red-8 Green-9 Blue-10
