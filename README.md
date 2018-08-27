@@ -27,7 +27,7 @@ PARTS:
 - Resistors (330Ω)
 - Arduino Uno R3
 
-## Automatic Fish Feeder
+## AUTOMATIC FISH FEEDER
 An automatic fish feeder controlled by an infrared remote. Set feeding times or simply press a button to feed the fish.
 
 **Demo: https://www.youtube.com/watch?v=mAnk5naaHTw&feature=youtu.be**
