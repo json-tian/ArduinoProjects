@@ -92,7 +92,7 @@ void loop() {
   } else if (input == addTime) {
     feederState = 1;
     emptyInput();
-    showSelection("Set Feeding Time");
+    showSelection("Add Feeding Time");
   } else if (input == up && feederState == 5) { //Scrolling up when viewing feeding times
     if (viewRow > 0) {
       viewRow--;
@@ -123,12 +123,15 @@ void loop() {
     }
   }
   if (millis() - startTime >= interval) { //Checking if a minute has gone past
-    startTime = millis();
+    unsigned long temp = 60000;
+    startTime += temp;
+    Serial.println(startTime);
+    Serial.println(millis());
     systemTime += 1;
-    if (feederState == 4)
-      updateOffScreen();
     if (systemTime == 1440)
       systemTime = 0;
+    if (feederState == 4)
+      updateOffScreen();
 
     for (int i = 0; i < 10; i ++) { //Checking if system time matches feeding times
       if (feedingTime[i] == systemTime)
@@ -140,7 +143,7 @@ void loop() {
 
 void keyPress(int num) {
   //If setting system time
-  if (feederState == 3 || feederState == 1) {
+  if (feederState == 3) {
     int index = checkCurrentDigit();
     timeInput[index] = num;
     showSelection("Set System Time");
@@ -152,7 +155,7 @@ void keyPress(int num) {
   } else if (feederState == 1) {
     int index = checkCurrentDigit();
     timeInput[index] = num;
-    showSelection("Set Feeding Time");
+    showSelection("Add Feeding Time");
     if (index == 3) {
       setFeedingTime();
       showMessage("Feeding Time Set");
