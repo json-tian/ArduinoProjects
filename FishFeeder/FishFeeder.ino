@@ -129,7 +129,7 @@ void loop() {
     Serial.println(millis());
     systemTime += 1;
     if (systemTime == 1440)
-      systemTime = 0;
+      systemTime = 1;
     if (feederState == 4)
       updateOffScreen();
 
